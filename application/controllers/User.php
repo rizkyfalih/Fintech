@@ -6,7 +6,7 @@
         }
         
         public function index(){
-            $this->load->view('login');
+            $this->load->view('admin/login');
         }
 
         public function login(){
@@ -24,22 +24,22 @@
                 $password = $this->input->post('password');
                 $status = $this->m_pegawai->get_status_pegawai($id_pegawai, $password);
                 $id = $this->m_pegawai->get_id_pegawai($id_pegawai, $password);
-                if($status == 'kasir'){
+                if($status == 'admin'){
                     $user_data = array(
                         'status' => $status,
                         'id_pegawai' => $id,
                         'logged_in' => true
                     );
                     $this->session->set_userdata($user_data);
-                    redirect('kasir/index');
+                    redirect('admin/index');
                 }else{
-                    redirect('login/index');
+                    redirect('user/index');
                 }
             } 
         }
         public function logout(){
             $this->session->sess_destroy();
-            redirect('login/index');
+            redirect('user/index');
         }
     }
 ?>
