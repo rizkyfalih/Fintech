@@ -3,6 +3,9 @@
         function __construct() {
             parent::__construct();
             $this->load->library('google');
+            if(!$this->session->userdata('logged_in')){
+                redirect('login/index');
+            }
         }
         
         public function index(){

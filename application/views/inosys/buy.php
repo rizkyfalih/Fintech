@@ -65,113 +65,46 @@
                 </div><!-- entry-title -->
             </div><!-- entry-header -->
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="tabs">
-                        <ul class="tabs-nav flex">
-                            <li class="tab-nav flex justify-content-center align-items-center active" data-target="#tab_details">Details</li>
-                            <li class="tab-nav flex justify-content-center align-items-center" data-target="#tab_venue">Venue</li>
-                            <li class="tab-nav flex justify-content-center align-items-center" data-target="#tab_organizers">Organizers</li>
-                            <li class="tab-nav flex justify-content-center align-items-center" data-target="#tab_about">About the event</li>
-                        </ul><!-- tabs-nav -->
-
-                        <div class="tabs-container">
-                            <div id="tab_details" class="tab-content">
-                                <div class="flex flex-wrap justify-content-between">
-                                    <div class="single-event-details">
-                                        <div class="single-event-details-row">
-                                            <label>Start:</label>
-                                            <p>June 17 @ 09:00 am</p>
-                                        </div>
-
-                                        <div class="single-event-details-row">
-                                            <label>End:</label>
-                                            <p>June 22 @ 07:30 am</p>
-                                        </div>
-
-                                        <div class="single-event-details-row">
-                                            <label>Price:</label>
-                                            <p class="sold-out">$89 <span>Sold Out</span></p>
-                                        </div>
-
-                                        <div class="single-event-details-row">
-                                            <label>Categories:</label>
-                                            <p>Festivals</p>
-                                        </div>
-
-                                        <div class="single-event-details-row">
-                                            <label>Tags:</label>
-                                            <p><a href="#">festivals</a>, <a href="#">music</a>, <a href="#">concert</a></p>
-                                        </div>
-                                    </div>
-
-                                    <div class="single-event-map">
-                                        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=telkom University&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                    </div>
-                                </div>
-                            </div><!-- .tab-content -->
-
-                            <div id="tab_venue" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
-                            </div><!-- .tab-content -->
-
-                            <div id="tab_organizers" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
-                            </div><!-- .tab-content -->
-
-                            <div id="tab_about" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
-                            </div><!-- .tab-content -->
-                        </div><!-- .tabs-container -->
-                    </div><!-- .tabs -->
-                </div><!-- .col-12 -->
-            </div><!-- .row -->
-
-            <div class="row">
-                <div class="col-12">
                     <div class="event-tickets">
-                        <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
-                            <div class="ticket-type flex flex-column flex-lg-row align-items-lg-center">
-                                <h3 class="entry-title">Silver Ticket</h3>
+            <form class="form-horizontal">
+            <div class="contact-form" action="<?php echo base_url()?>kasir/create_penjualan" method="post">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                    <div class="col-md-8">
+                    <div class="form-group">
+                          <select class="form-control" name="id_produk" id="id_produk">
+                          <?php 
+                            foreach ($produks as $produk) {
+                            echo '<option value="'.$produk->id_produk.'">'
+                            .$produk->nama_produk.'</option>';}           
+                          ?>
+                          </select>
+                        </div>    
+                        <div class="form-group">
+                            <input type="text" placeholder="Your name" class="form-control">
+                        </div>
+                        </div><!-- col-4 -->
 
-                                <span class="mt-2 mt-lg-0">Basic Entry</span>
+                        <div class="col-12 col-md-6">
+                            <input type="email" placeholder="Your email">
+                        </div><!-- col-6 -->
 
-                                <div class="ticket-price mt-3 mt-lg-0">
-                                    $89
-                                </div><!-- ticket-price -->
-                            </div><!-- ticket-type -->
+                        <div class="col-12">
+                            <input type="text" placeholder="Subject">
+                        </div>
 
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
-                        </div><!-- ticket-row -->
+                        <div class="col-12">
+                            <textarea name="name" rows="8" cols="80" placeholder="message"></textarea>
+                        </div>
 
-                        <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
-                            <div class="ticket-type flex flex-column flex-lg-row align-items-lg-center">
-                                <h3 class="entry-title"> Gold Ticket</h3>
-                                <span class="mt-2 mt-lg-0"> Vip Entry</span>
-                                <div class="ticket-price mt-3 mt-lg-0">
-                                    $119
-                                </div><!-- ticket-price -->
-                            </div><!-- ticket-type -->
-
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
-                        </div><!-- ticket-row -->
-
-                        <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
-                            <div class="ticket-type flex flex-column flex-lg-row align-items-lg-center">
-                                <h3 class="entry-title"> Early Bird Ticket</h3>
-                                <span class="mt-2 mt-lg-0"> Basic Entry</span>
-                                <div class="ticket-price mt-3 mt-lg-0">
-                                    $59
-                                </div><!-- ticket-price -->
-                            </div><!-- ticket-type -->
-
-
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
-                        </div><!-- ticket-row -->
-
-                    </div><!-- event-tickets -->
-                </div><!-- col-12 -->
-            </div><!-- row -->
+                        <div class="col-12 submit flex justify-content-center">
+                            <input type="submit" name="" value="send message" class="btn">
+                        </div>
+                    </div>
+                </div>
+                </div><!-- row -->
+            </div><!-- contact-form -->
+            </div>
         </div><!-- container -->
     </div><!-- main-content -->
 
