@@ -40,6 +40,19 @@
                 }
             } 
         }
+
+        public function buy(){
+            $id_ticket = $this->input->post('id_ticket');
+            $qty = $this->input->post('qty');
+            $harga = $this->input->post('harga');
+            $email_user = $this->input->post('email_user');
+            $nama_user = $this->input->post('nama_user');
+            $id_user = $this->m_user->get_id_by_email_name($nama_user, $email_user);
+            $jenis_pembayaran = $this->input->post('jenis_pembayaran');
+            $status = 'being verified';
+
+        }
+
         public function logout(){
             $this->session->sess_destroy();
             redirect('user/index');

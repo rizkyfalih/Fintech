@@ -3,8 +3,8 @@
     class M_pembelian extends CI_Model {
         /* CRUD function */
         public function create_pembelian($id_pembelian,$pj_total,$pj_bayar,$pj_kembalian){
-            $id_pegawai = $this->session->userdata('id_pegawai');
-            $date = date("Y-m-d");
+            // $id_pegawai = $this->session->userdata('id_pegawai');
+            // $date = date("Y-m-d");
             $this->db->query("INSERT INTO pembelian (id_pembelian,pj_total,pj_bayar,pj_kembalian,id_pegawai,pj_tgl) VALUES ('$id_pembelian','$pj_total','$pj_bayar','$pj_kembalian','$id_pegawai','$date')");
             foreach($this->cart->contents() as $item){
                 $id_detail_pembelian = $this->m_detil_pembelian->kode_detil_pembelian();
@@ -16,7 +16,7 @@
                     'qty' => $item['qty']
                 );
                 $this->db->insert('detil_pembelian',$data);
-                $this->db->query("update produk set jml_produk=jml_produk-'$item[qty]' where id_produk='$item[id]'");
+                $this->db->query("update ticket set jml_ticket=jml_produk-'$qty' where id_ticket='$id_ticket'");
             }
             return true;
         }

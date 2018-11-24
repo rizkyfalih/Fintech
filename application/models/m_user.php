@@ -52,6 +52,18 @@
             }
         }
 
+        public function get_id_by_email_name($name, $email){
+            $this->db->where('nama_user', $name);
+            $this->db->where('email_user', $email);
+
+            $result = $this->db->get('user');
+            if($result->num_rows() == 1){
+                return $result->row(0)->id_user;
+            } else {
+                return false;
+            }
+        }
+
         /* Other function */
         public function kode_user(){
             $this->db->select('RIGHT(user.id_user,4) as kode', FALSE);

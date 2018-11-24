@@ -12,6 +12,7 @@ body {
     color: hsl(0, 0%, 90%);
 }
 
+
 @font-face {
     font-family: "mountains";
     src: url(fonts/beyond_the_mountains.ttf);
@@ -30,6 +31,7 @@ body {
     flex: 0 0 20%;
     max-width: 20%;
 }
+
 
 /*------------------------------------------------------------
 # site-header

@@ -11,7 +11,7 @@
                 <div class="row align-items-center">
                     <div class="col-10 col-lg-4">
                         <h1 class="site-branding flex">
-                            <a href="#">INOSYS</a>
+                            <a href="<?php echo base_url('')?>">INOSYS</a>
                         </h1>
                     </div>
 
@@ -25,7 +25,7 @@
                             </div><!-- .hamburger-menu -->
 
                             <ul>
-                                <li><a href="#">HOME</a></li>
+                                <li><a href="<?php echo base_url()?>">HOME</a></li>
                                 <li><a href="#">INOSYS 2018</a></li>
                                 <li><a href="#">ARTISTS</a></li>
                                 <li><a href="#">BLOG</a></li>

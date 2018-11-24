@@ -10,7 +10,14 @@ class Home extends CI_Controller {
 	}
 
 	public function buy(){
-		$this->load->view('inosys/buy');
+		$data['produks'] = $this->m_ticket->get_all_ticket();
+		$this->load->view('inosys/buy',$data);
+	}
+
+	function get_ticket(){
+		$id_ticket = $this->input->post('id_ticket');
+		$data = $this->m_ticket->get_ticket_by_id($id_ticket);
+		echo json_encode($data);
 	}
 
 	public function oauth2callback(){
