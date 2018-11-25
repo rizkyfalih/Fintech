@@ -27,11 +27,18 @@
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
                                 <li><a href="#">INOSYS 2018</a></li>
-                                <li><a href="#">ARTISTS</a></li>
+                                <li><a href="#lineups">ARTISTS</a></li>
                                 <li><a href="#">BLOG</a></li>
                                 <li><a href="#">CONTACT</a></li>
-                                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                                <?php if($this->session->userdata('sess_logged_in') !== 1){ ?>
+                                    <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
+                                <?php } else {
+                                    echo '<li><a href="#signup">Sign Up</a></li>';
+                                    echo '<li><a href="#signup">Sign Up</a></li>';
+                                }?>
+                                
                             </ul><!-- flex -->
+
                         </nav><!-- .site-navigation -->
                     </div><!-- .col-12 -->
                 </div><!-- .row -->
