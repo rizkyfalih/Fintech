@@ -53,3 +53,71 @@
 
 </body>
 </html>
+
+
+            <form class="form-horizontal" action="<?php echo base_url()?>kasir/create_penjualan" method="post">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="control-label ">Ticket<span class="required">*</span></label>
+                                    <select class="form-control" name="id_ticket" id="id_ticket">
+                                    <?php 
+                                        echo '<option value="">
+                                        Choose Your ticket</option>';
+                                        foreach ($produks as $ticket) {
+                                        echo '<option value="'.$ticket->id_ticket.'">'
+                                        .$ticket->nama_ticket.'</option>';}           
+                                    ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label " >Harga<span class="required">*</span></label>
+                                    <input type="text" name="harga_jual" id="harga_jual" class="form-control" readonly>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label">Stock Tersedia<span class="required">*</span></label>
+                                    <input type="text"  name="jml_ticket" class="form-control" readonly>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label " >Quantity<span class="required">*</span></label>
+                                    <input type="number" name="qty" id="qty" onkeyup="sum();" class="form-control" min="0" max="50" required >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="control-label ">Sub Total<span class="required">*</span></label>
+                                    <input type="text" id="harga" name="harga"  class="form-control" readonly>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label ">Email<span class="required">*</span></label>
+                                    <input type="email" placeholder="Your email" name="email_user" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label ">Name<span class="required">*</span></label>
+                                    <input type="text" name="nama_user" placeholder="Your name" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label ">Pembayaran<span class="required">*</span></label>
+                                    <input type="email" placeholder="Your name" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label ">Sub Total<span class="required">*</span></label>
+                                    <input type="email" placeholder="Your name" class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Submit</button>  
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- row -->
+                </form>
