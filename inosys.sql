@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2018 at 01:45 PM
+-- Generation Time: Nov 26, 2018 at 01:16 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.1.15
 
@@ -29,13 +29,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pembelian` (
-  `id_pembelian` varchar(30) NOT NULL,
+  `id_pembelian` int(30) NOT NULL,
   `id_ticket` int(30) NOT NULL,
   `id_user` varchar(30) NOT NULL,
   `harga` int(30) NOT NULL,
   `qty` int(30) NOT NULL,
-  `status` varchar(30) NOT NULL
+  `stat` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pembelian`
+--
+
+INSERT INTO `pembelian` (`id_pembelian`, `id_ticket`, `id_user`, `harga`, `qty`, `stat`) VALUES
+(1, 3, 'rizkyfalihpridyandhika@gmail.c', 75000, 1, 'being verified');
 
 -- --------------------------------------------------------
 
@@ -56,7 +63,7 @@ CREATE TABLE `ticket` (
 --
 
 INSERT INTO `ticket` (`id_ticket`, `nama_ticket`, `jenis_ticket`, `jml_ticket`, `harga_ticket`) VALUES
-(3, 'Early Bird Ticket', 'Basic Entry', 150, 75000),
+(3, 'Early Bird Ticket', 'Basic Entry', 149, 75000),
 (4, 'Silver Ticket', 'Basic Entry', 100, 100000),
 (5, 'Gold Ticket', 'Vip Entry', 75, 150000);
 
@@ -80,9 +87,7 @@ CREATE TABLE `user` (
 -- Indexes for table `pembelian`
 --
 ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`id_pembelian`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_ticket` (`id_ticket`) USING BTREE;
+  ADD PRIMARY KEY (`id_pembelian`);
 
 --
 -- Indexes for table `ticket`
@@ -99,6 +104,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `pembelian`
+--
+ALTER TABLE `pembelian`
+  MODIFY `id_pembelian` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `ticket`

@@ -1,6 +1,7 @@
 <!-- Header Content -->
 <?php
   $this->load->view('inosys/header');
+  $log = $this->session->userdata('sess_logged_in');
 ?>
 <!-- /Header Content -->
 
@@ -28,14 +29,11 @@
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
                                 <li><a href="#">INOSYS 2018</a></li>
                                 <li><a href="#lineups">ARTISTS</a></li>
-                                <li><a href="#">BLOG</a></li>
-                                <li><a href="#">CONTACT</a></li>
-                                <?php if($this->session->userdata('sess_logged_in') !== 1){ ?>
+                                <?php if($log==0){ ?>
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
-                                <?php } else {
-                                    echo '<li><a href="#signup">Sign Up</a></li>';
-                                    echo '<li><a href="#signup">Sign Up</a></li>';
-                                }?>
+                                <?php } else {?>
+                                    <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
+                                <?php } ?>
                                 
                             </ul><!-- flex -->
 
@@ -116,7 +114,7 @@
                                         </div><!-- entry-title -->
 
                                         <div class="entry-content">
-                                            <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                            <p>Jamila is profesional singer from uk</p>
                                         </div><!-- entry-content -->
 
                                         <div class="box-link">
@@ -138,7 +136,7 @@
                                         </div><!-- entry-title -->
 
                                         <div class="entry-content">
-                                            <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                            <p>Sandar is profesional singer from spain</p>
                                         </div><!-- entry-content -->
 
                                         <div class="box-link">
@@ -164,7 +162,7 @@
                                         </div><!-- entry-title -->
 
                                         <div class="entry-content">
-                                            <p>Quisque at erat eu libero consequat tempus. Quisque mole stie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. </p>
+                                            <p>Dj crazy is the best dj from norway</p>
                                         </div><!-- entry-content -->
 
                                         <div class="box-link">
@@ -371,7 +369,7 @@
                 <div class="header">
                     <div class="entry-title">
                         <p>JUST THE BEST</p>
-                        <h2>Our Last News</h2>
+                        <h2>Our Last Mini News</h2>
                     </div><!-- entry-title -->
                 </div><!-- header -->
 
@@ -389,20 +387,15 @@
                             <div class="content-wrapper">
                                 <div class="entry-content">
                                     <div class="entry-header">
-                                        <h2><a href="#">10 Festival Tips</a></h2>
+                                        <h2>Inosys</h2>
                                     </div><!-- entry-header -->
 
                                     <div class="entry-meta">
-                                        <span class="author-name"><a href="#"> By James Williams</a></span>
-                                        <span class="space">|</span>
-                                        <span class="comments-count"><a href="#">3 comments</a></span>
+                                        <span class="author-name">By James Williams</span>
                                     </div><!-- entry-meta -->
 
                                     <div class="entry-description">
-                                        <p>Quisque at erat eu libero consequat tempus.
-                                            Quisque mole stie convallis tempus.
-                                            Ut semper purus metus, a euismod sapien sodales ac.
-                                            Duis viverra eleifend fermentum.</p>
+                                        <p>Inosys is a information system festival</p>
                                     </div><!-- entry-description -->
                                 </div><!-- entry-content -->
                             </div><!-- content-wrapper -->
@@ -420,20 +413,16 @@
                             <div class="content-wrapper">
                                 <div class="entry-content">
                                     <div class="entry-header">
-                                        <h2><a href="#">New event calendar for this year</a></h2>
+                                        <h2>New event calendar for this year</h2>
                                     </div><!-- entry-header -->
 
                                     <div class="entry-meta">
-                                        <span class="author-name"><a href="#">By James Williams</a></span>
-                                        <span class="space">|</span>
-                                        <span class="comments-count"><a href="#">3 comments</a></span>
+                                        <span class="author-name">By James Williams</span>
+                        
                                     </div><!-- entry-meta -->
 
                                     <div class="entry-description">
-                                        <p>Quisque at erat eu libero consequat tempus.
-                                            Quisque mole stie convallis tempus.
-                                            Ut semper purus metus, a euismod sapien sodales ac.
-                                            Duis viverra eleifend fermentum.</p>
+                                        <p>Inovation is a information system edufair for the next event</p>
                                     </div><!-- entry-description -->
                                 </div><!-- entry-content -->
                             </div><!-- .content-wrapper -->

@@ -2,22 +2,12 @@
 
     class M_pembelian extends CI_Model {
         /* CRUD function */
-        public function create_pembelian($id_pembelian,$pj_total,$pj_bayar,$pj_kembalian){
+        public function create_pembelian($id_ticket, $id_user, $harga,$qty,$status){
             // $id_pegawai = $this->session->userdata('id_pegawai');
             // $date = date("Y-m-d");
-            $this->db->query("INSERT INTO pembelian (id_pembelian,pj_total,pj_bayar,pj_kembalian,id_pegawai,pj_tgl) VALUES ('$id_pembelian','$pj_total','$pj_bayar','$pj_kembalian','$id_pegawai','$date')");
-            foreach($this->cart->contents() as $item){
-                $id_detail_pembelian = $this->m_detil_pembelian->kode_detil_pembelian();
-                $data = array(
-                    'id_detil_pembelian' => $id_detail_pembelian,
-                    'id_produk' => $item['id'],
-                    'id_pembelian' => $id_pembelian,
-                    'harga' => $item['subtotal'],
-                    'qty' => $item['qty']
-                );
-                $this->db->insert('detil_pembelian',$data);
-                $this->db->query("update ticket set jml_ticket=jml_produk-'$qty' where id_ticket='$id_ticket'");
-            }
+            $this->db->query("INSERT INTO pembelian(id_ticket,id_user,harga,qty,stat) VALUES ('$id_ticket', '$id_user','$harga','$qty','$status')");
+
+            $this->db->query("update ticket set jml_ticket=jml_ticket-'$qty' where id_ticket='$id_ticket'");
             return true;
         }
 

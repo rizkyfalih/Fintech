@@ -1,6 +1,7 @@
 <!-- Header Content -->
 <?php
   $this->load->view('inosys/header');
+  $log = $this->session->userdata('sess_logged_in');
 ?>
 <!-- /Header Content -->
 
@@ -26,12 +27,16 @@
 
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
-                                <li><a href="#">SUNFEST 2018</a></li>
-                                <li><a href="#">ARTISTS</a></li>
-                                <li><a href="#">BLOG</a></li>
-                                <li><a href="#">CONTACT</a></li>
-                                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                                <li><a href="#">INOSYS 2018</a></li>
+                                <li><a href="#lineups">ARTISTS</a></li>
+                                <?php if($log==0){ ?>
+                                    <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
+                                <?php } else {?>
+                                    <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
+                                <?php } ?>
+                                
                             </ul><!-- flex -->
+
                         </nav><!-- .site-navigation -->
                     </div><!-- .col-12 -->
                 </div><!-- .row -->
@@ -81,17 +86,18 @@
                                     <div class="single-event-details">
                                         <div class="single-event-details-row">
                                             <label>Start:</label>
-                                            <p>June 17 @ 09:00 am</p>
+                                            <p>December 25 @ 08:00 am</p>
                                         </div>
 
                                         <div class="single-event-details-row">
                                             <label>End:</label>
-                                            <p>June 22 @ 07:30 am</p>
+                                            <p>December 25 @ 11:30 am</p>
                                         </div>
 
                                         <div class="single-event-details-row">
                                             <label>Price:</label>
-                                            <p class="sold-out">$89 <span>Sold Out</span></p>
+                                            <!-- <p class="sold-out">$89 <span>Sold Out</span></p> -->
+                                            <p>IDR 75000 </p>
                                         </div>
 
                                         <div class="single-event-details-row">
@@ -112,15 +118,15 @@
                             </div><!-- .tab-content -->
 
                             <div id="tab_venue" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
+                                <p>Telkom University is world class</p>
                             </div><!-- .tab-content -->
 
                             <div id="tab_organizers" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
+                                <p>Information System organizers is the best</p>
                             </div><!-- .tab-content -->
 
                             <div id="tab_about" class="tab-content">
-                                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. </p>
+                                <p>Inosys is information system festival</p>
                             </div><!-- .tab-content -->
                         </div><!-- .tabs-container -->
                     </div><!-- .tabs -->
@@ -137,11 +143,11 @@
                                 <span class="mt-2 mt-lg-0">Basic Entry</span>
 
                                 <div class="ticket-price mt-3 mt-lg-0">
-                                    $89
+                                <p>IDR.100000 </p>
                                 </div><!-- ticket-price -->
                             </div><!-- ticket-type -->
 
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
+                            <a href="<?php echo base_url('home/signin')?>"><input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"></a><!-- btn -->
                         </div><!-- ticket-row -->
 
                         <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
@@ -149,11 +155,11 @@
                                 <h3 class="entry-title"> Gold Ticket</h3>
                                 <span class="mt-2 mt-lg-0"> Vip Entry</span>
                                 <div class="ticket-price mt-3 mt-lg-0">
-                                    $119
+                                <p>IDR.150000 </p>
                                 </div><!-- ticket-price -->
                             </div><!-- ticket-type -->
 
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
+                            <a href="<?php echo base_url('home/signin')?>"><input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"></a><!-- btn -->
                         </div><!-- ticket-row -->
 
                         <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
@@ -161,12 +167,12 @@
                                 <h3 class="entry-title"> Early Bird Ticket</h3>
                                 <span class="mt-2 mt-lg-0"> Basic Entry</span>
                                 <div class="ticket-price mt-3 mt-lg-0">
-                                    $59
+                                <p>IDR.75000 </p>
                                 </div><!-- ticket-price -->
                             </div><!-- ticket-type -->
 
 
-                            <input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"><!-- btn -->
+                            <a href="<?php echo base_url('home/signin')?>"><input type="submit" name="" value="Buy" class="btn mt-2 mb-2 mt-lg-0 mb-lg-0"></a><!-- btn -->
                         </div><!-- ticket-row -->
 
                     </div><!-- event-tickets -->

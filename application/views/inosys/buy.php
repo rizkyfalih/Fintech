@@ -1,6 +1,9 @@
 <!-- Header Content -->
 <?php
   $this->load->view('inosys/header');
+  $name = $this->session->userdata('name');
+  $email = $this->session->userdata('email');
+  $log = $this->session->userdata('sess_logged_in');
 ?>
 <!-- /Header Content -->
 
@@ -26,11 +29,14 @@
 
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
-                                <li><a href="#">SUNFEST 2018</a></li>
-                                <li><a href="#">ARTISTS</a></li>
-                                <li><a href="#">BLOG</a></li>
-                                <li><a href="#">CONTACT</a></li>
-                                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                                <li><a href="#">INOSYS 2018</a></li>
+                                <li><a href="#lineups">ARTISTS</a></li>
+                                <?php if($log==0){ ?>
+                                    <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
+                                <?php } else {?>
+                                    <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
+                                <?php } ?>
+                                
                             </ul><!-- flex -->
                         </nav><!-- .site-navigation -->
                     </div><!-- .col-12 -->
@@ -66,12 +72,12 @@
             </div><!-- entry-header -->
 
             <div class="event-tickets">
-            <form class="form-horizontal" action="<?php echo base_url()?>kasir/create_penjualan" method="post">
+            <form class="form-horizontal" action="<?php echo base_url('home/buy_ticket')?>" method="post">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label class="control-label ">Ticket<span class="required">*</span></label>
+                                    <label class="control-label " style="color:black;">Ticket<span class="required">*</span></label>
                                     <select class="form-control" name="id_ticket" id="id_ticket">
                                     <?php 
                                         echo '<option value="">
@@ -84,45 +90,35 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label " >Harga<span class="required">*</span></label>
+                                    <label class="control-label" style="color:black;" >Price<span class="required">*</span></label>
                                     <input type="text" name="harga_jual" id="harga_jual" class="form-control" readonly>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="control-label">Stock Tersedia<span class="required">*</span></label>
+                                    <label class="control-label" style="color:black;">Stock Available<span class="required">*</span></label>
                                     <input type="text"  name="jml_ticket" class="form-control" readonly>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="control-label " >Quantity<span class="required">*</span></label>
+                                    <label class="control-label" style="color:black;">Quantity<span class="required">*</span></label>
                                     <input type="number" name="qty" id="qty" onkeyup="sum();" class="form-control" min="0" max="50" required >
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="control-label ">Sub Total<span class="required">*</span></label>
+                                    <label class="control-label" style="color:black;">Total Price<span class="required">*</span></label>
                                     <input type="text" id="harga" name="harga"  class="form-control" readonly>
                                 </div>
                             </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label ">Email<span class="required">*</span></label>
-                                    <input type="email" placeholder="Your email" name="email_user" class="form-control" required>
+                                    <label class="control-label" style="color:black;">Email<span class="required">*</span></label>
+                                    <input type="email" placeholder="Your email" name="email_user" class="form-control" required value="<?php echo $email ?>">
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label ">Name<span class="required">*</span></label>
-                                    <input type="text" name="nama_user" placeholder="Your name" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label ">Pembayaran<span class="required">*</span></label>
-                                    <input type="email" placeholder="Your name" class="form-control">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label ">Sub Total<span class="required">*</span></label>
-                                    <input type="email" placeholder="Your name" class="form-control">
+                                    <label class="control-label" style="color:black;">Name<span class="required">*</span></label>
+                                    <input type="text" name="nama_user" placeholder="Your name" class="form-control" value="<?php echo $name ?>">
                                 </div>
 
                                 <div class="form-group">

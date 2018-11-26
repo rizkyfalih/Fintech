@@ -45,11 +45,15 @@
             $id_ticket = $this->input->post('id_ticket');
             $qty = $this->input->post('qty');
             $harga = $this->input->post('harga');
-            $email_user = $this->input->post('email_user');
-            $nama_user = $this->input->post('nama_user');
-            $id_user = $this->m_user->get_id_by_email_name($nama_user, $email_user);
-            $jenis_pembayaran = $this->input->post('jenis_pembayaran');
+            $id_user = $this->input->post('email_user');
+            // $nama_user = $this->input->post('nama_user');
+            // $id_user = $this->m_user->get_id_by_email_name($nama_user, $email_user);
             $status = 'being verified';
+
+            $order_proses=$this->m_pembelian->create_pembelian($id_ticket,$id_user,$harga,$qty,$status);
+            if($order_proses){
+                redirect(base_url('home/buy'));
+            }
 
         }
 
