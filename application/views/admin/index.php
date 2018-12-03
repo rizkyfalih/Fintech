@@ -1,12 +1,12 @@
 <!-- Header Content -->
 <?php
-  $this->load->view('layout/header');
+  $this->load->view('admin/header');
 ?>
 <!-- /Header Content -->
 
   <!-- Navigation Content -->
   <?php
-    $this->load->view('kasir/navigation');
+    $this->load->view('admin/navigation');
   ?>
   <!-- /Navigation Content -->
 
@@ -155,7 +155,7 @@
 
     <!-- Footer content -->
     <?php
-      $this->load->view('layout/footer');
+      $this->load->view('admin/footer');
     ?>
     <!-- /Footer content -->
 

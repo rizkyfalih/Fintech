@@ -1,2 +1,0 @@
-# Inosys
-Simple Festival Website

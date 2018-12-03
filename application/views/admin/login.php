@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Grutty | Login </title>
-
+  <?php echo CI_VERSION; ?>
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -28,7 +28,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <?php $attributes = array('id' => 'login_form', 'class' => 'form_horizontal');?>
-            <?php echo form_open('pegawai/login', $attributes);?>
+            <?php echo form_open('admin/login', $attributes);?>
               <h1>Login Form</h1>
               <?php if($this->session->flashdata('errors')):?>
               <?php echo $this->session->flashdata('errors');?>

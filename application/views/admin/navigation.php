@@ -16,7 +16,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Kasir</h2>
+                <h2><?php echo $this->session->userdata('status'); ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -46,7 +46,7 @@
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url('pegawai/logout')?>">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="<?php echo base_url('admin/logout')?>">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>

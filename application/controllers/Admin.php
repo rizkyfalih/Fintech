@@ -1,17 +1,35 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
 class Admin extends CI_Controller {
-	function __construct() {
-        parent::__construct();
-        $this->load->library('google');
-        
-	}
 	
 	public function index(){
+		
 		$this->load->view('admin/login');
+	
+		
 	}
 
-	public function ticket(){
-		$this->load->view('inosys/ticket');
+	public function login(){
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		if($username == 'admin' && $password == 'admin'){
+			$user_data = array(
+				'status' => 'admin',
+				'logged_in' => true
+			);
+			$this->session->set_userdata($user_data);
+				redirect('admin/verifikasi');
+		}else{
+			redirect('admin/index');
+		} 
+	}
+
+	public function verifikasi(){
+		$this->load->view('admin/index');
+	}
+
+	public function logout(){
+		$this->session->sess_destroy();
+		redirect('admin/index');
 	}
 
 	public function signin(){
@@ -52,46 +70,11 @@ class Admin extends CI_Controller {
 		$this->load->view('inosys/buy',$data);
 	}
 
-	public function buy_ticket(){
-		$id_ticket = $this->input->post('id_ticket');
-		$qty = $this->input->post('qty');
-		$harga = $this->input->post('harga');
-		$id_user = $this->input->post('email_user');
-		// $id_user = $this->input->post('nama_user');
-		// $id_user = $this->m_user->get_id_by_email_name($nama_user, $email_user);
-		$status = 'being verify';
-
-		$order_proses=$this->m_pembelian->create_pembelian($id_ticket,$id_user,$harga,$qty,$status);
-		if($order_proses){
-			redirect(base_url('home/'));
-		}
-	}
-
 	function get_ticket(){
 		$id_ticket = $this->input->post('id_ticket');
 		$data = $this->m_ticket->get_ticket_by_id($id_ticket);
 		echo json_encode($data);
 	}
 
-	public function oauth2callback(){
-		$google_data=$this->google->validate();
-		$session_data=array(
-				'name'=>$google_data['name'],
-				'email'=>$google_data['email'],
-				'source'=>'google',
-				'profile_pic'=>$google_data['profile_pic'],
-				'link'=>$google_data['link'],
-				'sess_logged_in'=>1
-				);
-			$this->session->set_userdata($session_data);
-		redirect(base_url());
-	}
-	public function logout(){
-		session_destroy();
-		unset($_SESSION['access_token']);
-		$session_data=array(
-				'sess_logged_in'=>0);
-		$this->session->set_userdata($session_data);
-		redirect(base_url(),$session_data);
-	}
+
 }
