@@ -24,7 +24,21 @@
             }
         }
 
-    
+        public function get_all_pembelian(){
+            $query = $this->db->query("SELECT id_user, nama_ticket, harga, qty, stat FROM pembelian JOIN ticket USING (id_ticket)");
+            // if($query->num_rows()>0){
+            //     foreach ($query->result() as $data){
+            //         $hasil = array(
+            //             'id_user' => $data->id_user,
+            //             'nama_ticket' => $data->nama_ticket,
+            //             'harga' => $data->harga,
+            //             'qty' => $data->qty,
+            //             'stat' => $data->stat,
+            //         );
+            //     }                
+            // }
+            return $query->result();
+        }    
     }
 
 

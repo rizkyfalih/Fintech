@@ -27,121 +27,27 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="col-md-8">
-                  <div class="x_content">
-                    <br />
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url()?>kasir/add_to_cart" method="post">
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nama_produk">Nama Produk<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" name="id_produk" id="id_produk">
-                          <?php 
-                            foreach ($produks as $produk) {
-                            echo '<option value="'.$produk->id_produk.'">'
-                            .$produk->nama_produk.'</option>';}           
-                          ?>
-                          </select>
-                        </div>                    
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="harga_jual">Harga Satuan<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="harga_jual" name="harga_jual"  class="form-control col-md-7 col-xs-12" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="jml_produk">Stock Tersedia<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="jml_produk" name="jml_produk"  class="form-control col-md-7 col-xs-12" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qty">Quantity<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="qty" name="qty" onkeyup="sum();" class="form-control col-md-7 col-xs-12" >
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="harga">Sub Total<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="harga" name="harga" class="date-picker form-control col-md-7 col-xs-12"  type="text" readonly>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="col-md-9">
-                        <span class = "pull-right">
-                          <button class="btn btn-primary" type="submit" id="tambah" >Tambah</button>
-                        </span>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  </div>
-                  <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="<?php echo base_url()?>kasir/create_penjualan" method="post">
-                  <div class="col-md-4">
-                    <br />
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label class="control-label col-md-12 col-sm-3 col-xs-12" for="pj_total">Total Harga<span class="required">*</span>
-                        </label>
-                        <div class="col-md-12 col-sm-6 col-xs-12">
-                          <input type="text" id="pj_total" name="pj_total" required="required" value="<?php echo $this->cart->total();?>"  class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-12 col-sm-3 col-xs-12" for="pj_bayar">Pembayaran<span class="required">*</span>
-                        </label>
-                        <div class="col-md-12 col-sm-6 col-xs-12">
-                          <input type="text" id="pj_bayar" name="pj_bayar" required="required" onkeyup="kembalian()"  class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-12 col-sm-3 col-xs-12" for="pj_kembalian">Kembalian<span class="required">*</span>
-                        </label>
-                        <div class="col-md-12 col-sm-6 col-xs-12">
-                          <input type="text" id="pj_kembalian" name="pj_kembalian" required="required" class="form-control col-md-7 col-xs-12"  disabled>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                      <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-3">
-                      <span class="pull-right">
-                        <button type="submit" class="btn btn-success">Submit</button>                      
-                      </span>
-                      </div>
-                    </div>
-                    </div>
-                    </form> 
-                  </div>
-                    <div class="ln_solid"></div>
                     <table class="table table-striped" id="table">
                       <thead>
                         <tr>
-                          <th>ID Produk</th>
-                          <th>Nama Barang</th>
+                          <th>ID User</th>
+                          <th>Nama Ticket</th>
                           <th>Harga</th>
                           <th>Quantity</th>
-                          <th>Sub Total</th>
+                          <th>Status</th>
                           <th>Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php $i = 1;?>
-                        <?php foreach ($this->cart->contents() as $items): ?>
-                        <?php echo form_hidden($i.'[rowid]', $items['rowid']); ?>
+                        <?php foreach ($tickets as $ticket): ?>
                         <tr>
-                          <td><?=$items['id'];?></td>
-                          <td><?=$items['name'];?></td>
-                          <td><?php echo number_format($items['price']);?></td>
-                          <td><?php echo number_format($items['qty']);?></td>
-                          <td><?php echo number_format($items['subtotal']);?></td>
-                          <td><a href="<?php echo base_url().'kasir/remove_a_cart/'.$items['rowid'];?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                          <td><?php echo $ticket->id_user;?></td>
+                          <td><?php echo $ticket->nama_ticket;?></td>
+                          <td><?php echo $ticket->harga;?></td>
+                          <td><?php echo $ticket->qty;?></td>
+                          <td><?php echo $ticket->stat;?></td>
+                          <td><a href="<?php echo base_url();?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
                         </tr>
-                        <?php $i++?>
                         <?php endforeach;?>
                       </tbody>                    
                     </table>

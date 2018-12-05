@@ -17,14 +17,16 @@ class Admin extends CI_Controller {
 				'logged_in' => true
 			);
 			$this->session->set_userdata($user_data);
-				redirect('admin/verifikasi');
+			
+			redirect('admin/verifikasi');
 		}else{
 			redirect('admin/index');
 		} 
 	}
 
 	public function verifikasi(){
-		$this->load->view('admin/index');
+		$data['tickets'] = $this->m_ticket->get_all_pembelian();
+		$this->load->view('admin/index',$data);
 	}
 
 	public function logout(){
