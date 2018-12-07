@@ -25,14 +25,30 @@ class Home extends CI_Controller {
 					'link'=>$google_data['link'],
 					'sess_logged_in'=>1
 					);
-			
+					$this->m_user->create_user($session_data['email'],$session_data['name']);
 			$this->session->set_userdata($session_data);
 			$this->load->view('inosys/buy', $data);
-		} else {
-
-		$data['google_login_url']=$this->google->get_login_url();
-		$this->load->view('inosys/signin',$data);
+		} else {	
+			$data['google_login_url']=$this->google->get_login_url();
+			$this->load->view('inosys/signin',$data);
 		}
+	}
+
+	public function my_ticket(){
+		$google_data=$this->google->validate();
+		$session_data=array(
+				'name'=>$google_data['name'],
+				'email'=>$google_data['email'],
+				'source'=>'google',
+				'profile_pic'=>$google_data['profile_pic'],
+				'link'=>$google_data['link'],
+				'sess_logged_in'=>1
+				);
+		$this->session->set_userdata($session_data);
+		
+		$data['my_ticket'] = $this->m_ticket->get_user_ticket($session_data['email']);
+		$this->load->view('inosys/book',$data);
+	
 	}
 
 	public function buy(){
@@ -65,6 +81,21 @@ class Home extends CI_Controller {
 			redirect(base_url('home/'));
 		}
 	}
+
+	public function print_ticket(){
+		$this->load->library('pdfgenerator');
+ 
+		$data['users']=array(
+			array('firstname'=>'Agung','lastname'=>'Setiawan','email'=>'ag@setiawan.com'),
+			array('firstname'=>'Hauril','lastname'=>'Maulida Nisfar','email'=>'hm@setiawan.com'),
+			array('firstname'=>'Akhtar','lastname'=>'Setiawan','email'=>'akh@setiawan.com'),
+			array('firstname'=>'Gitarja','lastname'=>'Setiawan','email'=>'git@setiawan.com')
+		);
+ 
+	    $html = $this->load->view('invoice', $data, true);
+	    
+	    $this->pdfgenerator->generate($html,'contoh');
+	  }
 
 	function get_ticket(){
 		$id_ticket = $this->input->post('id_ticket');

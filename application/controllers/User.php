@@ -57,9 +57,21 @@
 
         }
 
+        public function print_ticket(){
+            $this->load->library('pdfgenerator');
+            $nama_paket = $this->session->userdata('nama_paket');
+            $data['pelajarans'] = $this->pelajaran_model->get_pelajaran($nama_paket);
+            $html = $this->load->view('invoice', $data, true);
+            $this->pdfgenerator->generate($html,'Pembelian Ticket');
+          }
+
         public function logout(){
-            $this->session->sess_destroy();
-            redirect('user/index');
+            session_destroy();
+            unset($_SESSION['access_token']);
+            $session_data=array(
+                    'sess_logged_in'=>0);
+            $this->session->set_userdata($session_data);
+            redirect(base_url());
         }
     }
 ?>

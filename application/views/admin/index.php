@@ -30,6 +30,7 @@
                     <table class="table table-striped" id="table">
                       <thead>
                         <tr>
+                          <th>ID Pembelian</th>
                           <th>ID User</th>
                           <th>Nama Ticket</th>
                           <th>Harga</th>
@@ -41,12 +42,13 @@
                       <tbody>
                         <?php foreach ($tickets as $ticket): ?>
                         <tr>
+                          <td><?php echo $ticket->id_pembelian;?></td>
                           <td><?php echo $ticket->id_user;?></td>
                           <td><?php echo $ticket->nama_ticket;?></td>
                           <td><?php echo $ticket->harga;?></td>
                           <td><?php echo $ticket->qty;?></td>
                           <td><?php echo $ticket->stat;?></td>
-                          <td><a href="<?php echo base_url();?>" class="btn btn-warning btn-xs"><span class="fa fa-close"></span> Batal</a></td>
+                          <td><a class="btn btn-info" href="<?php echo base_url();?>/admin/verify/<?php echo $ticket->id_pembelian?>"><span class="glyphicon glyphicon-edit"> Verify</span></a></td>
                         </tr>
                         <?php endforeach;?>
                       </tbody>                    

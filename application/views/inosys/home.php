@@ -32,6 +32,7 @@
                                 <?php if($log==0){ ?>
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>
+                                    <li><a href="<?php echo base_url('home/my_ticket')?>">MY TICKETS</a></li>
                                     <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
                                 <?php } ?>
                                 

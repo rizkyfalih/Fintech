@@ -29,6 +29,12 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/index',$data);
 	}
 
+	public function verify($id){
+		if($this->m_ticket->update_status($id)){
+			redirect("admin/verifikasi");
+		}
+	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('admin/index');
