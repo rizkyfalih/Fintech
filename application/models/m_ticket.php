@@ -31,7 +31,7 @@
         }
         
         public function get_user_ticket($id_user){
-            $query = $this->db->query("SELECT id_pembelian, id_user, nama_ticket, harga, qty, stat FROM pembelian JOIN ticket USING (id_ticket) WHERE id_user = '$id_user'");
+            $query = $this->db->query("SELECT id_pembelian, id_user, nama_ticket, harga, qty, stat FROM pembelian JOIN ticket USING (id_ticket) WHERE id_user = '$id_user' ORDER BY id_pembelian DESC");
         
             return $query->result();
         }

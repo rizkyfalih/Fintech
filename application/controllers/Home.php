@@ -92,7 +92,7 @@ class Home extends CI_Controller {
 
 		$order_proses=$this->m_pembelian->create_pembelian($id_ticket,$id_user,$harga,$qty,$status);
 		if($order_proses){
-			redirect(base_url('home/'));
+			redirect(base_url('home/my_ticket'));
 		}
 	}
 
@@ -117,19 +117,6 @@ class Home extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function oauth2callback(){
-		$google_data=$this->google->validate();
-		$session_data=array(
-				'name'=>$google_data['name'],
-				'email'=>$google_data['email'],
-				'source'=>'google',
-				'profile_pic'=>$google_data['profile_pic'],
-				'link'=>$google_data['link'],
-				'sess_logged_in'=>1
-				);
-			$this->session->set_userdata($session_data);
-		redirect(base_url());
-	}
 	public function logout(){
 		session_destroy();
 		unset($_SESSION['access_token']);

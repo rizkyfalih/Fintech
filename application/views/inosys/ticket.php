@@ -12,7 +12,7 @@
                 <div class="row align-items-center">
                     <div class="col-10 col-lg-4">
                         <h1 class="site-branding flex">
-                            <a href="<?php echo base_url()?>">SUNFEST</a>
+                            <a href="<?php echo base_url()?>">INOSYS</a>
                         </h1>
                     </div>
 
@@ -27,8 +27,8 @@
 
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
-                                <li><a href="#">INOSYS 2018</a></li>
-                                <li><a href="#lineups">ARTISTS</a></li>
+                                <li><a href="<?php echo base_url('home/ticket')?>">BUY TICKETS</a></li>
+                                <li><a href="<?php echo base_url()?>#lineups">ARTISTS</a></li>
                                 <?php if($log==0){ ?>
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>
@@ -87,12 +87,12 @@
                                     <div class="single-event-details">
                                         <div class="single-event-details-row">
                                             <label>Start:</label>
-                                            <p>December 25 @ 08:00 am</p>
+                                            <p>December 11 @ 08:00 am</p>
                                         </div>
 
                                         <div class="single-event-details-row">
                                             <label>End:</label>
-                                            <p>December 25 @ 11:30 am</p>
+                                            <p>December 11 @ 11:30 am</p>
                                         </div>
 
                                         <div class="single-event-details-row">

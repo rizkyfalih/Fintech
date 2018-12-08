@@ -29,8 +29,8 @@
 
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
-                                <li><a href="#">INOSYS 2018</a></li>
-                                <li><a href="#lineups">ARTISTS</a></li>
+                                <li><a href="<?php echo base_url('home/ticket')?>">BUY TICKETS</a></li>
+                                <li><a href="<?php echo base_url()?>#lineups">ARTISTS</a></li>
                                 <?php if($log==0){ ?>
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>

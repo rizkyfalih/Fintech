@@ -27,8 +27,8 @@
 
                             <ul>
                                 <li><a href="<?php echo base_url()?>">HOME</a></li>
-                                <li><a href="#">INOSYS 2018</a></li>
-                                <li><a href="#lineups">ARTISTS</a></li>
+                                <li><a href="<?php echo base_url('home/ticket')?>">BUY TICKETS</a></li>
+                                <li><a href="<?php echo base_url()?>#lineups">ARTISTS</a></li>
                                 <?php if($log==0){ ?>
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>
@@ -53,11 +53,11 @@
                         <h2>Hello world!</h2>
 
                         <div class="entry-meta-date">
-                            06.28.018
+                            11.12.2018
                         </div><!-- .entry-meta-date -->
                     </div><!-- .entry-header -->
 
-                    <div class="countdown flex flex-wrap justify-content-between" data-date="2018/06/06">
+                    <div class="countdown flex flex-wrap justify-content-between" data-date="2018/12/11">
                         <div class="countdown-holder">
                             <div class="dday"></div>
                             <label>Days</label>
