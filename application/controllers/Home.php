@@ -29,8 +29,22 @@ class Home extends CI_Controller {
 			$this->session->set_userdata($session_data);
 			$this->load->view('inosys/buy', $data);
 		} else {	
-			$data['google_login_url']=$this->google->get_login_url();
-			$this->load->view('inosys/signin',$data);
+			$google_data=$this->google->validate();
+			$session_data=array(
+					'name'=>$google_data['name'],
+					'email'=>$google_data['email'],
+					'source'=>'google',
+					'profile_pic'=>$google_data['profile_pic'],
+					'link'=>$google_data['link'],
+					'sess_logged_in'=>1
+					);
+			if ($session_data['name'] != NULL){
+				$this->session->set_userdata($session_data);
+				$this->load->view('inosys/buy', $data);
+			} else {
+				$data['google_login_url']=$this->google->get_login_url();
+				$this->load->view('inosys/signin',$data);
+			}
 		}
 	}
 
@@ -124,4 +138,5 @@ class Home extends CI_Controller {
 		$this->session->set_userdata($session_data);
 		redirect(base_url(),$session_data);
 	}
+
 }

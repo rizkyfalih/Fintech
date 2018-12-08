@@ -33,7 +33,7 @@
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>
                                     <li><a href="<?php echo base_url('home/my_ticket')?>">MY TICKETS</a></li>
-                                    <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
+                                    <li><a href="<?php echo base_url('home/logout')?>">LOG OUT</a></li>
                                 <?php } ?>
                                 
                             </ul><!-- flex -->
@@ -74,13 +74,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="event-tickets">
+                    <?php foreach ($my_ticket as $ticket): ?>
                         <div class="ticket-row flex flex-column flex-lg-row justify-content-lg-between align-items-lg-center">
-                            <?php foreach ($my_ticket as $ticket): ?>
-                            
+                        
                             <div class="ticket-type flex flex-column flex-lg-row align-items-lg-center">
                                 <h3 class="entry-title"><?php echo $ticket->nama_ticket; ?></h3>
                                 
-                                <span class="mt-2 mt-lg-0"><?php echo $ticket->id_user; ?></span>
+                                <span class="mt-2 mt-lg-0"><?php echo $ticket->stat; ?></span>
 
                                 <div class="ticket-price mt-3 mt-lg-0">
                                 <p>IDR.<?php echo $ticket->harga; ?> </p>
@@ -90,13 +90,14 @@
 
                             <div class="flex align-items-center">
                                 <div class="number-of-tickets flex justify-content-between align-items-center">
-                                    <?php echo $ticket->qty; ?>
+                                    
                                 </div><!-- number-of-tickets -->
 
-                                <div class="clear-ticket-count"><?php echo $ticket->stat; ?></div>
+                                <div class="clear-ticket-count"><?php echo $ticket->qty; ?></div>
                             </div><!-- flex -->
-
-                            <a href="<?php echo base_url();?>home/print_ticket/"><button type="button" class="btn btn-block btn-primary"><span class="fa fa-print"> Print Ticket</span></button></a>
+                            <?php if ($ticket->stat == 'verified') :?>
+                                <a href="<?php echo base_url();?>home/print_ticket/"><span class="fa fa-print"> Print Ticket</span></a>
+                            <?php endif;?>
                         </div><!-- ticket-row -->
                         <?php endforeach;?>
 

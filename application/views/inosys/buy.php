@@ -14,7 +14,7 @@
                 <div class="row align-items-center">
                     <div class="col-10 col-lg-4">
                         <h1 class="site-branding flex">
-                            <a href="<?php echo base_url()?>">SUNFEST</a>
+                            <a href="<?php echo base_url()?>">INOSYS</a>
                         </h1>
                     </div>
 
@@ -35,7 +35,7 @@
                                     <li><a href="<?php echo base_url('home/signin')?>">SIGN IN</a></li>
                                 <?php } else {?>
                                     <li><a href="<?php echo base_url('home/my_ticket')?>">MY TICKETS</a></li>
-                                    <li><a href="<?php echo base_url('auth/logout')?>">LOG OUT</a></li>
+                                    <li><a href="<?php echo base_url('home/logout')?>">LOG OUT</a></li>
                                 <?php } ?>
                                 
                             </ul><!-- flex -->

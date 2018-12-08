@@ -39,6 +39,7 @@ class Auth extends CI_Controller {
 			$this->session->set_userdata($session_data);
 		redirect(base_url());
 	}
+
 	public function logout(){
 		session_destroy();
 		unset($_SESSION['access_token']);
