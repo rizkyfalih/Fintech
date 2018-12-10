@@ -132,15 +132,11 @@
                     <table>
                         <tr>
                             <td>
-                                
-                                My Company<br>
-                                123 Street<br>
-                                Example City
+                            
                             </td>
                             <td>
-                                Client name<br>
-                                456 Street<br>
-                                Client City
+                            <?php echo $this->session->userdata('email');?><br>
+                            <?php echo $this->session->userdata('name');?>
                                 
                             </td>
                         </tr>
@@ -157,7 +153,7 @@
                                                 <tr class="item">
                                         <td><?php echo $ticket->nama_ticket; ?></td>
                         <td><?php echo $ticket->qty; ?></td>
-                        <td class="text-align-right"><?php echo $ticket->harga_ticket; ?></td>
+                        <td class="text-align-right">IDR <?php echo $ticket->harga_ticket; ?></td>
                     </tr>
   <?php endforeach; ?>
             <tr class="total">
