@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Grutty | Login </title>
+    <title>Inosys | Login </title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -48,7 +48,6 @@
                   );
                   echo form_submit($data);
                 ?>
-                <a class="reset_pass" href="#">Lost your password?</a>
               </div>
               <div class="clearfix"></div>
             <?php echo form_close();?>

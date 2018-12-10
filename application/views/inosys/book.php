@@ -96,7 +96,7 @@
                                 <div class="clear-ticket-count"><?php echo $ticket->qty; ?></div>
                             </div><!-- flex -->
                             <?php if ($ticket->stat == 'verified') :?>
-                                <a href="<?php echo base_url();?>home/print_ticket/"><span class="fa fa-print"> Print Ticket</span></a>
+                                <a href="<?php echo base_url();?>home/print_ticket/<?php echo $ticket->id_pembelian;?>"><span class="fa fa-print"> Print Ticket</span></a>
                             <?php endif;?>
                         </div><!-- ticket-row -->
                         <?php endforeach;?>

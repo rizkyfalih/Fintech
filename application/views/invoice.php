@@ -1,72 +1,175 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Report Table</title>
-  <style type="text/css">
-    #outtable{
-      padding: 20px;
-      border:1px solid #e3e3e3;
-      width:600px;
-      border-radius: 5px;
+    <meta charset="utf-8">
+    <title>Your receipt</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .invoice-box {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #eee;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+        font-size: 16px;
+        line-height: 24px;
+        font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        color: #555;
     }
- 
-    .short{
-      width: 50px;
+
+    .invoice-box table {
+        width: 100%;12
+        text-align: left;
+        border-spacing: 0;
+        border-collapse: collapse;
     }
- 
-    .normal{
-      width: 150px;
+
+    .invoice-box table td {
+        padding: 5px;
+        vertical-align: top;
     }
- 
-    table{
-      border-collapse: collapse;
-      font-family: arial;
-      color:#5E5B5C;
+
+    .invoice-box table tr td:nth-child(2) {
+        text-align: right;
     }
- 
-    thead th{
-      text-align: left;
-      padding: 10px;
+
+    .invoice-box table tr.top table td {
+        padding-bottom: 20px;
     }
- 
-    tbody td{
-      border-top: 1px solid #e3e3e3;
-      padding: 10px;
+
+    .invoice-box table tr.top table td.title {
+        font-size: 45px;
+        line-height: 45px;
+        color: #333;
     }
- 
-    tbody tr:nth-child(even){
-      background: #F6F5FA;
+
+    .invoice-box table tr.information table td {
+        padding-bottom: 40px;
     }
- 
-    tbody tr:hover{
-      background: #EAE9F5
+
+    .invoice-box table tr.heading td {
+        background: #eee;
+        border-bottom: 1px solid #ddd;
+        font-weight: bold;
     }
-  </style>
+
+    .invoice-box table tr.details td {
+        padding-bottom: 20px;
+    }
+
+    .invoice-box table tr.item td{
+        border-bottom: 1px solid #eee;
+    }
+
+    .invoice-box table tr.item.last td {
+        border-bottom: none;
+    }
+
+    .invoice-box table tr.total td:nth-child(2) {
+        border-top: 2px solid #eee;
+        /*font-weight: bold;*/
+    }
+
+    .text-align-right {
+        text-align: right;
+    }
+
+    @media  only screen and (max-width: 600px) {
+        .invoice-box table tr.top table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .invoice-box table tr.information table td {
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    }
+
+    /** RTL **/
+    .rtl {
+        direction: rtl;
+        font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    }
+
+    .rtl table {
+        text-align: right;
+    }
+
+    .rtl table tr td:nth-child(2) {
+        text-align: left;
+    }
+    </style>
 </head>
+
 <body>
-	<div id="outtable">
-	  <table>
-	  	<thead>
-	  		<tr>
-	  			<th class="short">#</th>
-	  			<th class="normal">First Name</th>
-	  			<th class="normal">Last Name</th>
-	  			<th class="normal">Username</th>
-	  		</tr>
-	  	</thead>
-	  	<tbody>
-	  		<?php $no=1; ?>
-	  		<?php foreach($users as $user): ?>
-	  		  <tr>
-	  			<td><?php echo $no; ?></td>
-	  			<td><?php echo $user['firstname']; ?></td>
-	  			<td><?php echo $user['lastname']; ?></td>
-	  			<td><?php echo $user['email']; ?></td>
-	  		  </tr>
-	  		<?php $no++; ?>
-	  		<?php endforeach; ?>
-	  	</tbody>
-	  </table>
-	 </div>
+    <div class="invoice-box">
+        <table>
+            <tr class="top">
+                <td colspan="3">
+                    <table>
+                        <tr>
+                            <td class="title">
+                                
+                                
+                                INOSYS
+                            </td>
+
+                            <td>
+                                Date: <?php echo date("Y-m-d"); ?><br>
+                                Invoice ref.: <?php echo date("Y-m-d"); ?>-GKSJWD
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="information">
+                <td colspan="3">
+                    <table>
+                        <tr>
+                            <td>
+                                
+                                My Company<br>
+                                123 Street<br>
+                                Example City
+                            </td>
+                            <td>
+                                Client name<br>
+                                456 Street<br>
+                                Client City
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr class="heading">
+                <td>Item</td>
+                <td>Quantity</td>
+                <td class="text-align-right">Individual Price</td>
+            </tr>
+            <?php foreach ($my_ticket as $ticket): ?>
+                                                <tr class="item">
+                                        <td><?php echo $ticket->nama_ticket; ?></td>
+                        <td><?php echo $ticket->qty; ?></td>
+                        <td class="text-align-right"><?php echo $ticket->harga_ticket; ?></td>
+                    </tr>
+  <?php endforeach; ?>
+            <tr class="total">
+                <td></td>
+                <td colspan="2">
+                   <b>Total: IDR <?php echo $ticket->harga; ?></b><br />
+                </td>
+            </tr>
+
+                    </table>
+            <h4 class="text-align-left">Note:</h4>
+            <p>Please bring this print out to pay the ticket and get the ticket</p>
+    </div>
 </body>
 </html>

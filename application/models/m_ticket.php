@@ -36,6 +36,12 @@
             return $query->result();
         }
 
+        public function get_user_pembelian($id_pembelian){
+            $query = $this->db->query("SELECT id_pembelian, id_user, nama_ticket, harga_ticket ,harga, qty, stat FROM pembelian JOIN ticket USING (id_ticket) WHERE id_pembelian = '$id_pembelian'");
+        
+            return $query->result();
+        }
+
         public function update_status($id){
             $query = $this->db->query("UPDATE pembelian SET stat = 'verified' WHERE id_pembelian = $id");
             return true;

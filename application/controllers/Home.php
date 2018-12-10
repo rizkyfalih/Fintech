@@ -96,15 +96,15 @@ class Home extends CI_Controller {
 		}
 	}
 
-	public function print_ticket(){
+	public function print_ticket($id_pembelian){
 		$this->load->library('pdfgenerator');
- 
-		$data['users']=array(
-			array('firstname'=>'Agung','lastname'=>'Setiawan','email'=>'ag@setiawan.com'),
-			array('firstname'=>'Hauril','lastname'=>'Maulida Nisfar','email'=>'hm@setiawan.com'),
-			array('firstname'=>'Akhtar','lastname'=>'Setiawan','email'=>'akh@setiawan.com'),
-			array('firstname'=>'Gitarja','lastname'=>'Setiawan','email'=>'git@setiawan.com')
-		);
+		$data['my_ticket'] = $this->m_ticket->get_user_pembelian($id_pembelian);
+		// $data['users']=array(
+		// 	array('firstname'=>'Agung','lastname'=>'Setiawan','email'=>'ag@setiawan.com'),
+		// 	array('firstname'=>'Hauril','lastname'=>'Maulida Nisfar','email'=>'hm@setiawan.com'),
+		// 	array('firstname'=>'Akhtar','lastname'=>'Setiawan','email'=>'akh@setiawan.com'),
+		// 	array('firstname'=>'Gitarja','lastname'=>'Setiawan','email'=>'git@setiawan.com')
+		// );
  
 	    $html = $this->load->view('invoice', $data, true);
 	    
