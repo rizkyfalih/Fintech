@@ -112,7 +112,7 @@ class Home extends CI_Controller {
  
 	    $html = $this->load->view('invoice', $data, true);
 	    
-	    $this->pdfgenerator->generate($html,'contoh');
+	    $this->pdfgenerator->generate($html,'Inosys Ticket');
 	  }
 
 	function get_ticket(){
